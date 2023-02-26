@@ -4,7 +4,7 @@ on: [pull_request_target]
 
 jobs:
   lint:
-    name: PS Script Analyzer
+    name: PS Script Analyzer I changed this
     runs-on: ubuntu-latest
     steps:
     - uses: actions/checkout@v2
