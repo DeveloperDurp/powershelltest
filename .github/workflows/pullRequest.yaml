@@ -19,6 +19,7 @@ jobs:
         failOnInfos: false
   test:
     runs-on: windows-latest
+    name: Unit Tests
     needs: lint
     steps:
       - name: Check out repository code
