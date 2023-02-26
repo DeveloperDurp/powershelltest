@@ -4,8 +4,20 @@ on:
   push: 
 
 jobs:
+  lint:
+    name: Run PSSA
+    runs-on: windows-latest
+    steps:
+    - uses: actions/checkout@v2
+    - name: lint
+      uses: devblackops/github-action-psscriptanalyzer@master
+      with:
+        failOnErrors: true
+        failOnWarnings: true
+        failOnInfos: true
   test:
     runs-on: windows-latest
+    needs: lint
     steps:
       - name: Check out repository code
         uses: actions/checkout@v3
