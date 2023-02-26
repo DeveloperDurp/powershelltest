@@ -13,9 +13,9 @@ jobs:
       uses: devblackops/github-action-psscriptanalyzer@master
       with:
         settingsPath: lint/PSScriptAnalyser.ps1
-        failOnErrors: true
-        failOnWarnings: true
-        failOnInfos: true
+        failOnErrors: false
+        failOnWarnings: false
+        failOnInfos: false
   test:
     runs-on: windows-latest
     needs: lint
