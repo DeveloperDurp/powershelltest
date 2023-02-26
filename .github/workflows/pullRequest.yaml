@@ -19,7 +19,7 @@ jobs:
         failOnInfos: false
   test:
     runs-on: windows-latest
-    needs: lint
+    name: Unit Tests
     steps:
       - name: Check out repository code
         uses: actions/checkout@v3
@@ -31,8 +31,9 @@ jobs:
         with:
           include_paths: pester
           github_token: ${{ secrets.GITHUB_TOKEN }}
+          report_name: Unit_Tests
+          report_title: Unit Tests
           tests_fail_step: true
-          skip_check_run: true
       - name: dump test results
         shell: pwsh
         run: |
@@ -41,7 +42,9 @@ jobs:
           Write-Host 'Total Tests FAILED.....:  ${{ steps.pester_tests.outputs.failed_count }}'
   approve:
     runs-on: ubuntu-latest
-    needs: test
+    needs: 
+      - lint
+      - test
     permissions:
       pull-requests: write
     steps:

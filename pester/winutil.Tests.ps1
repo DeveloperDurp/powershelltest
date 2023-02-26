@@ -86,3 +86,11 @@ Describe "GUI" {
         }
     } 
 }
+
+Describe "Test Fail" {
+    Context "XML" {
+        It "This should fail" {
+            "fail" | should -Be "fail"
+        }
+    }
+}
